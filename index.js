@@ -41,9 +41,9 @@ const start = async () => {
 
         try {
             if( text === '/start') {
-                await UserModel.create({chatId})
-                await bot.sendMessage(chatId, `Hello, ${msg.from.username}`)
-                await bot.sendSticker(chatId, './stickers/AnimatedSticker.tgs')
+                    await UserModel.create(chatId)
+                    await bot.sendMessage(chatId, `Hello, ${msg.from.username}`)
+                    await bot.sendSticker(chatId, './stickers/AnimatedSticker.tgs')
             }
 
             if( text === '/info') {
@@ -55,6 +55,7 @@ const start = async () => {
                 await startGame(chatId)
             }
         } catch (e) {
+            console.log(e)
             return bot.sendMessage(chatId, 'ops, something went wrong:(')
         }
     });
